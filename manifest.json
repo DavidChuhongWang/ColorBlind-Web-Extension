@@ -1,10 +1,10 @@
 {
   "manifest_version": 2,
-  "name": "ColorMind",
+  "name": "ColorEyes",
   "description": "Color Replacement Tool",
   "version": "1.0",
   "browser_action": {
-    "default_title": "ColorMind",
+    "default_title": "ColorEyes",
     "default_icon": "img/icon.png",
     "default_popup" : "html/popup.html"
   },

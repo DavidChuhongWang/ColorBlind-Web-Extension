@@ -8,7 +8,7 @@ function applyStyles(){};
 	function init() {
 		chrome.storage.sync.get("enabled", function (item) {
 			if ($.isEmptyObject(item) || item["enabled"]) {
-				console.log("ColorMind enabled.");
+				console.log("ColorEyes enabled.");
 				chrome.storage.sync.set({"enabled": true});
 
 				// chrome.storage.onChanged.addListener(function (changes, namespace) {
@@ -17,18 +17,18 @@ function applyStyles(){};
 				// 	}
 				// });
 
-				$("<style id='colormind-styles' type='text/css'></style>").appendTo("head");
+				$("<style id='coloreyes-styles' type='text/css'></style>").appendTo("head");
 				$("*").each(function(i, e) {
 					color = $(e).css('color').match(/\d+/g);
 					background_color = $(e).css('background-color').match(/\d+/g);
-					$(e).addClass('colormind_background_' + colors.indexOf(makeUnique(background_color)));
-					$(e).addClass('colormind_' + colors.indexOf(makeUnique(color)));
+					$(e).addClass('coloreyes_background_' + colors.indexOf(makeUnique(background_color)));
+					$(e).addClass('coloreyes_' + colors.indexOf(makeUnique(color)));
 				});
 				// counter = colors.length;
 				console.log(colors.length + " unique colors identified.")
 
 				applyStyles = function() {
-					$("#colormind-styles").text("");
+					$("#coloreyes-styles").text("");
 					$.each(colors, function(n, color) {
 				        for (var i = 0; i < color.length; ++i) {
 				        	color[i] = parseInt(color[i]);
@@ -39,16 +39,16 @@ function applyStyles(){};
 
 				applyStyles();
 			} else {
-				console.log("ColorMind disabled.");
+				console.log("ColorEyes disabled.");
 			}
 		});
 	}
 
 	function addClass(color, n) {
-		$("#colormind-styles").text(
-			$("#colormind-styles").text() + ".colormind_" + n + "{color: " + color + " !important;}" 
-				+ ".colormind_" + n + "::-webkit-input-placeholder {color: " + color + " !important;}"
-				+ ".colormind_background_" + n + "{background-color: " + color + " !important;}"
+		$("#coloreyes-styles").text(
+			$("#coloreyes-styles").text() + ".coloreyes_" + n + "{color: " + color + " !important;}" 
+				+ ".coloreyes_" + n + "::-webkit-input-placeholder {color: " + color + " !important;}"
+				+ ".coloreyes_background_" + n + "{background-color: " + color + " !important;}"
 		);
 	}
 
