@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "ColorMind",
+  "description": "Color Replacement Tool",
+  "version": "1.0",
+  "browser_action": {
+    "default_title": "ColorMind",
+    "default_icon": "img/icon.png",
+    "default_popup" : "html/popup.html"
+  },
+  "background": {
+    "scripts": [
+      "src/background.js"
+    ]
+  },
+  "options_page": "html/diagnosis.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*/*"
+      ],
+      "js": [
+        "libs/jquery-3.1.1.min.js",
+        "src/content.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": [
+    "storage",
+    "contextMenus"
+  ]
+}
